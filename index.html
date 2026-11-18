@@ -1,114 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade 25/09</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Início | Arkhivinos</title>
+    <script>
+        // Quem chega pelo link sem estar logado vai primeiro para a tela de login.
+        // Visitantes que escolheram "Continuar sem entrar" seguem direto.
+        (function () {
+            try {
+                var logado = Object.keys(localStorage).some(function (k) {
+                    return k.indexOf('sb-') === 0 && k.slice(-11) === '-auth-token';
+                });
+                var visitante = sessionStorage.getItem('visitante') === 'sim';
+                if (!logado && !visitante) {
+                    location.replace('login.html');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <link rel="stylesheet" href="base.css">
 </head>
+
 <body>
-    <h1 class="titulo">Bem Vindo Comprador</h1>
-    <h3 class="topico">Eleve o Seu Jogo ao Próximo Nível 🎮</h3>
-    <p>
-        Seja você um jogador casual que busca diversão no fim de semana ou um pro-player focado no competitivo,
-        nós sabemos o que você precisa: precisão, velocidade e a liberdade de escolher o seu próximo desafio.
-        Aqui, nós não vendemos apenas produtos; nós entregamos a chave para a sua próxima vitória.
-    </p>
-    <h3 class="topico">Periféricos de Alta Performance 🖱️</h3>
-    <p>
-        Sinta a diferença em cada clique e movimento. Nossa linha de periféricos foi selecionada para garantir
-        que o seu setup seja uma extensão das suas habilidades:
-    </p>
-    <p>
-        Mouses e Teclados Mecânicos: Resposta imediata, switches de alta durabilidade e a precisão milimétrica
-        que separa a vitória da derrota.
-    </p>
-    <p>
-        Headsets Imersivos: Ouça cada passo antes mesmo de o inimigo aparecer e comunique-se com clareza
-        absoluta com o seu squad.
-    </p>
-    <p>
-        Mousepads e Acessórios: Deslize perfeito e ergonomia para aguentar aquelas maratonas de jogos que
-        vão até a madrugada.
-    </p>
-    <h3 class="topico">Gift Cards: O Universo dos Games na Sua Mão 💳</h3>
-    <p>
-        Quer comprar aquele jogo que acabou de lançar, garantir a skin mais rara do evento ou assinar o passe
-        de batalha? Nós temos os Gift Cards das principais plataformas do mercado de forma rápida, segura e digital.
-        Garanta seus créditos para PlayStation, Xbox, Nintendo, PC (Steam, Epic), Mobile (Free Fire, Roblox,
-        Google Play, App Store) e muito mais.
-    </p>
-    <h2 class="titulo">Produtos Disponíveis</h2>
     <div id="conteiner">
-        <div class="produto">
-            <h3>GiftCard</h3>
-            <img src="img/images.webp"
-                 alt="GiftCard"
-                 loading="lazy">
-            <button onclick="alternarDetalhes('detalhes-p1', this)"
-                    class="detalhes">
-                Ver Detalhes
-            </button>
-            <div id="detalhes-p1" class="oculto">
-                <p class="detalhe">Nome: GiftCard R$15,00</p>
-                <p class="detalhe">Preço: R$49,00</p>
+        <header>
+            <div id="titulo">
+                <img src="img/IFPR.png" alt="IFPR logo">
+                <h1 id="NomeProjeto" style="max-width: 90%; margin: 0; line-height: 0;"><img src="img/arkhivinos.png" alt="Arkhivinos" style="width: 30rem; max-width: 100%; height: auto;"></h1>
             </div>
-            <button onclick="clicouNoBotao1()" class="venda">
-                Vender
-            </button>
-        </div>
-        <div class="produto">
-            <h3>Mouse Pad</h3>
-            <img src="img/mousePad.webp"
-                 alt="Mouse Pad"
-                 loading="lazy">
-            <button onclick="alternarDetalhes('detalhes-p2', this)"
-                    class="detalhes">
-                Ver Detalhes
-            </button>
-            <div id="detalhes-p2" class="oculto">
-                <p class="detalhe">Nome: Razer Mouse pad</p>
-                <p class="detalhe">Preço: R$80,00</p>
+            <div id="menu">
+                <nav id="navegacao">
+                    <div class="BlocoDeSelecao ativo">
+                        <a href="index.html" class="linkpa" aria-current="page">Início</a>
+                    </div>
+                    <div class="BlocoDeSelecao">
+                        <a href="projetos.html" class="linkpa">Projetos Anteriores</a>
+                    </div>
+                    <div class="BlocoDeSelecao">
+                        <a href="adicione.html" class="linkpa">Adicione seu Projeto</a>
+                    </div>
+                    <div class="BlocoDeSelecao">
+                        <a href="comunicacao.html" class="linkpa">Comunicação</a>
+                    </div>
+                    <div class="BlocoDeSelecao">
+                        <a href="ifinos.html" class="linkpa">IFINOS</a>
+                    </div>
+                    <div class="BlocoDeSelecao">
+                        <a href="sobre_nos.html" class="linkpa">Sobre nós</a>
+                    </div>
+                </nav>
             </div>
-            <button onclick="clicouNoBotao2()" class="venda">
-                Vender
-            </button>
-        </div>
-        <div class="produto">
-            <h3>Mouse</h3>
-            <img src="img/mouse.webp"
-                 alt="Mouse"
-                 loading="lazy">
-            <button onclick="alternarDetalhes('detalhes-p3', this)"
-                    class="detalhes">
-                Ver Detalhes
-            </button>
-            <div id="detalhes-p3" class="oculto">
-                <p class="detalhe">Nome: Razer Cobra Mouse</p>
-                <p class="detalhe">Preço: R$65,00</p>
+        </header>
+        <section class="caixa duasColunas">
+            <div class="texto">
+                <h2 class="tituloSecao">O que é o componente de Projeto Integrador?</h2>
+                <p>No componente de Projeto Integrador I, os alunos aprenderão a criar um site com o grande objetivo de
+                    usar a tecnologia para resolver um problema real do dia a dia. Para tirar essa ideia do papel, eles
+                    vão dominar duas ferramentas fundamentais da internet ao longo do ano: o HTML, que constrói a
+                    estrutura da página, e o CSS, que cuida de todo o design e do visual. Mais do que apenas programar,
+                    essa atividade desafia os estudantes a organizarem suas próprias etapas de trabalho, aprendendo
+                    a planejar um projeto do início ao fim e a colaborar uns com os outros.</p>
+                <p>Para estimular o espírito de pesquisa e expandir o conhecimento geral, os estudantes poderão
+                    escolher grandes temas de relevância social para serem o assunto principal do site. Isso faz com que
+                    a tecnologia ganhe um propósito maior, conectando o aprendizado técnico com a conscientização e a
+                    cidadania.</p>
             </div>
-            <button onclick="clicouNoBotao3()" class="venda">
-                Vender
-            </button>
-        </div>
+            <div class="imagemLado">
+                <img src="img/selo-projeto-integrador.png" alt="Logo do Projeto Integrador">
+            </div>
+        </section>
+        <section class="caixa">
+            <h2 class="tituloSecao">Exemplo de Projeto</h2>
+            <div class="listaLinhas" id="exemploProjeto">
+                <p class="vazio">Carregando projeto...</p>
+            </div>
+            <div class="linkCentral">
+                <a href="projetos.html" class="botaoPrincipal">Ver todos os projetos &rarr;</a>
+            </div>
+        </section>
+        <footer class="rodape">
+            Arkhivinos &middot; Projeto Integrador &middot; IFPR Campus Toledo
+        </footer>
     </div>
-    <h3 class="topico">Por que escolher a nossa loja? 🛡️</h3>
-    <p>
-        Suporte de Jogador para Jogador: Nossa equipe entende do assunto e está pronta para indicar o melhor
-        produto para o seu estilo de jogo.
-    </p>
-    <p>
-        Rápida e Segura: Seus periféricos embalados com o maior cuidado e seus Gift Cards entregues de
-        forma instantânea.
-    </p>
-    <p>
-        Produtos Originais: Trabalhamos apenas com as melhores marcas do mercado para garantir a máxima
-        durabilidade do seu setup.
-    </p>
-    <p>
-        Não seja o jogador que perde por causa de lag ou hardware ultrapassado. Atualize seu setup hoje
-        mesmo e domine o servidor!
-    </p>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script-inicio.js"></script>
+    <script src="voltar-topo.js"></script>
 </body>
+
 </html>
